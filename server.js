@@ -9,8 +9,7 @@ const hbs = exphbs.create({helpers});
 const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const SequelizeStore = require('connection-session-sequelize')(session.Store);
-
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
     secret : 'purpledinosaurs',
     // session expires after 10 minutes
@@ -28,12 +27,12 @@ const sess = {
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(path.join(_dirname,'public')));
-app.eengine('handlebars', hbs.engine);
+app.use(express.static(path.join(__dirname, 'public')));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars')
 app.use(routes);
 
-sequelize.sync({force: false}).then(()=>{
-    app.listen(PORTR,()=> console.log('LISTENING NOW!'))
-})
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+  });
 
