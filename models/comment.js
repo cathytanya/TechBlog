@@ -1,4 +1,4 @@
-const {Models, DataTypes} = require('sequelize');
+const {Model, DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 // creating the comment model
 class Comment extends Model {}
@@ -7,14 +7,14 @@ Comment.init(
     {
         // ID column was made with the following characteristics
         id:{
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             allowNull: false,
             autoIncrement: true
         },
         // USER_ID column was created with the following characteristics
         user_id:{
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             reference:{
                 module:'user',
@@ -23,7 +23,7 @@ Comment.init(
         },
         // POST_ID column was created with the following characteristics
         post_id:{
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             reference:{
                 module:'post',
@@ -32,7 +32,7 @@ Comment.init(
         },
         // COMMENT_ID column was created with the following characteristics
         comment_id:{
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate:{
                 len:[1]

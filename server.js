@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
-    secret : 'purpledinosaurs',
+    secret : 'secret',
     // session expires after 10 minutes
     cookie: {
         expires: 10*1000*60
@@ -25,11 +25,14 @@ const sess = {
 }
 
 app.use(session(sess));
+
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars')
+app.set('view engine', 'handlebars');
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
