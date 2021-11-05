@@ -30,8 +30,8 @@ Comment.init(
                 key:'id'
             }
         },
-        // COMMENT_ID column was created with the following characteristics
-        comment_id:{
+        // COMMENT_text column was created with the following characteristics
+        comment_text:{
             type: DataTypes.STRING,
             allowNull: false,
             validate:{
