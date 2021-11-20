@@ -1,7 +1,7 @@
 // connecting to the modules for the following model files
 const Comment= require('./comment.js')
-const Post = require('./Post.js')
-const User = require('./User.js');
+const Post = require('./post.js')
+const User = require('./user.js');
 
 // creating the associations
 // relate the foreign key from User model(userID) to the Post model
